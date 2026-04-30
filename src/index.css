@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-digital: "Press Start 2P", "Courier New", monospace;
+  --font-sans: "Press Start 2P", monospace;
+}
+
+@layer utilities {
+  .animate-glitch {
+    animation: glitch 1.5s infinite;
+  }
+  
+  .animate-tear {
+    animation: tear 3s infinite linear;
+  }
+  
+  .animate-static {
+    animation: static-noise 0.2s steps(2) infinite;
+  }
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); text-shadow: none; }
+  1%, 3% { text-shadow: -2px 0 0 #ff00ff, 2px 0 0 #00ffff; transform: translate(-1px, 1px); }
+  2%, 4% { text-shadow: 2px 0 0 #ff00ff, -2px 0 0 #00ffff; transform: translate(1px, -1px); }
+  5% { transform: translate(0); text-shadow: none; }
+}
+
+@keyframes tear {
+  0%, 95% { transform: skewX(0); }
+  96% { transform: skewX(1deg); }
+  97% { transform: skewX(-1deg); }
+  98% { transform: skewX(0); }
+  100% { transform: skewX(0); }
+}
+
+@keyframes static-noise {
+  0% { transform: translate(0px, 0px) }
+  10% { transform: translate(-1px, -1px) }
+  20% { transform: translate(-1px, 0px) }
+  30% { transform: translate(1px, 1px) }
+  40% { transform: translate(1px, -1px) }
+  50% { transform: translate(-1px, 1px) }
+  60% { transform: translate(-1px, 1px) }
+  70% { transform: translate(1px, 0px) }
+  80% { transform: translate(-1px, -1px) }
+  90% { transform: translate(0px, 1px) }
+  100% { transform: translate(1px, -1px) }
+}
+
+body {
+  background-color: #000;
+  color: #00ffff;
+  font-family: var(--font-digital);
+}
